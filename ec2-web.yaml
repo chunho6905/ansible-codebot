@@ -6,12 +6,12 @@
     - name: Install httpd
       ansible.builtin.package:
         name: httpd
-        state: present
+
     - name: Change port
       ansible.builtin.lineinfile:
         path: /etc/httpd/conf/httpd.conf
         regexp: "^Listen "
-        line: Listen 8080
+
     - name: Start httpd
       ansible.builtin.service:
         name: httpd
