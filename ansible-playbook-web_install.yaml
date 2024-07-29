@@ -3,11 +3,11 @@
   hosts: all
   become: true
   tasks:
-    - name: install httpd
-      package: 
+    - name: Install httpd
+      ansible.builtin.package:
         name: httpd
 
-    - name: start httpd
+    - name: Start httpd
       ansible.builtin.service:
         name: httpd
         state: started
