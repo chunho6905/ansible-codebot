@@ -1,0 +1,13 @@
+---
+- name: Install and configure httpd
+  hosts: all
+  become: true
+  tasks:
+    - name: install httpd
+      package: 
+        name: httpd
+
+    - name: start httpd
+      ansible.builtin.service:
+        name: httpd
+        state: started
