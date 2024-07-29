@@ -1,0 +1,25 @@
+---
+- name: Create EC2 instance
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    ec2_name: ansible-web
+    ec2_keypair: 2024-07-25
+    ec2_type: t2.micro
+    ec2_ami: ami-06a4c3c537d34c26c
+    ec2_region: us-east-1
+    ec2_subnet: subnet-0072f9bfc724014e9
+    ec2_security_group: ansible-sg
+  tasks:
+    - name: Create EC2 instance
+      amazon.aws.ec2_instance:
+        name: "{{ ec2_name }}"
+        key_name: "{{ ec2_keypair }}"
+        instance_type: "{{ ec2_type }}"
+        image_id: "{{ ec2_ami }}"
+        region: "{{ ec2_region }}"
+        vpc_subnet_id: "{{ ec2_subnet }}"
+        security_group: "{{ ec2_security_group }}"
+        wait: true
+        state: present
